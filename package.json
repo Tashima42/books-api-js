@@ -4,7 +4,7 @@
   "description": "api for serving books",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon src/index.js --exec 'npm run lint && node'",
+    "start": "nodemon src/index.js --exec 'npm run lint && node -r dotenv/config src/index.js dotenv_config_path=.env'",
     "lint": "eslint src/**/*.js src/*.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/Tashima42/books-api-js#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "pg": "^8.4.1",
     "pg-hstore": "^2.3.3",
