@@ -1,16 +1,12 @@
-const { Sequelize } = require('sequelize')
+//const sequelize = require('./db')
+const express = require('express')
+const app = express()
+const port = process.env.PORT
 
-const sequelize = new Sequelize('postgres', process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD, {
-  host: 'localhost',
-  dialect: 'postgres'
+app.get('/', (req, res) => {
+  res.send('Hello World!')
 })
 
-async function tryConnect() {
-  try {
-    await sequelize.authenticate()
-    console.log('Ok')
-  } catch (error) {
-    console.log(error)
-  }
-}
-tryConnect()
+app.listen(port, () => {
+  console.log(`listening at http://localhost:${port}`)
+})
