@@ -16,7 +16,7 @@ module.exports = {
         pdf: 'https://github.com/Tashima42/books/raw/main/en/Douglas%20Adams/Life%2C%20The%20universe%20and%20everything/Life%2C-The-Universe-and-Everything_Douglas-Adams.pdf',
         mobi: 'https://github.com/Tashima42/books/raw/main/en/Douglas%20Adams/Life%2C%20The%20universe%20and%20everything/Life%2C-The-Universe-and-Everything_Douglas-Adams.mobi',
         epub: 'https://github.com/Tashima42/books/raw/main/en/Douglas%20Adams/Life%2C%20The%20universe%20and%20everything/Life%2C-The-Universe-and-Everything_Douglas-Adams.epub',
-        bookId: 4,
+        bookId: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       }

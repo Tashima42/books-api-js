@@ -14,9 +14,10 @@ module.exports = (sequelize, DataTypes) => {
       book.hasMany(models.link, {
         foreignKey: 'bookId'
       })
-      book.belongsToMany(models.authors_books, {
+      book.belongsToMany(models.author, {
+        through: 'authors_books',
+        as: 'authors',
         foreignKey: 'bookId',
-        onDelete: 'CASCADE'
       })
       book.belongsTo(models.publisher, {
         foreignKey: 'publisherId',

@@ -13,8 +13,8 @@ module.exports = {
     */
     await queryInterface.bulkInsert('authors_books', [
       {
-        bookId: 4,
-        authorId: 2,
+        bookId: 1,
+        authorId: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       }
