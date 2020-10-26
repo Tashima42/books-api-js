@@ -1,32 +1,66 @@
-const db = require('../../models')
+import Controller from './Controller'
+import db from '../../models'
 
-const { book } = db
+const Book = db.book
 
-const controller = {}
+const controller = Controller('book')
 
-controller.getAll = async (req, res) => {
+controller.getAllBooks = async (req, res) => {
   try {
-    const allBooks = await book.findAll({
-      include: [
-        {
-          model: db.author,
-          as: 'authors'
-        },
-        {
-          model: db.publisher,
-          as: 'publisher'
-        },
-        {
-          model: db.link,
-          as: 'links'
-        }
-      ]
-    })
-    res.send(allBooks)
+    const allBooks = await controller.getAll()
+    if (!allBooks) {
+      res.status(404).send(`There isn't any data`)
+    }
+    res.status(200).send(allBooks)
   } catch (error) {
-    console.error(`Error: ${error}`)
-    res.send('Internal Server error')
+    console.error(`[books-controller]: ${error}`)
+    res.status(500).send('Internal server error')
   }
 }
 
-module.exports = controller
+controller.getOneBook = async (req, res) => {
+  const { id } = req.params
+  try {
+    const oneBook = await controller.getOne(id)
+    if (!oneBook) {
+      res.status(404).send(`There isn't any data`)
+    }
+    res.status(200).send(oneBook)
+  } catch (error) {
+    console.error(`[books-controller]: ${error}`)
+    res.status(500).send('Internal server error')
+  }
+}
+
+controller.insertBook = async (req, res) => {
+  const {
+    name,
+    edition,
+    isbn,
+    publisherId,
+    published,
+    language,
+    description
+  } = req.body
+
+  try {
+    const insertedBook = await Book.create( {
+      name,
+      edition,
+      isbn,
+      publisherId,
+      published,
+      language,
+      description
+    })
+    if (!insertedBook) {
+      return res.status(400).send('Bad information')
+    }
+    return res.status(201).send('Success')
+  } catch (error) {
+    console.error(`[books-controller]: ${error}`)
+    return res.status(500).send('Internal server error')
+  }
+}
+
+export default controller
