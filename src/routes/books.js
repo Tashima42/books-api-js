@@ -6,7 +6,7 @@ export default [
    * @apiName GetAllBooks
    * @apiGroup Books
    * 
-   * @apiSuccess {array} books All books basic information. 
+   * @apiSuccess {Array} books All books basic information. 
    * 
    * @apiSuccessExample Success-Response: 
    *   200 OK
@@ -23,18 +23,44 @@ export default [
    *      "updatedAt": "2020-10-25T20:13:51.399Z"
    *   }]
    * 
-   * @apiError BooksNotFound There isn't any data`
+   * @apiError BooksNotFound There isn't any data.
    */
   {
     method: 'get',
     path: '/',
     controller: BooksController.getAllBooks
   },
+  /**
+   * @api {get} /books/:id Request one book by id
+   * @apiName GetOneBook
+   * @apiGroup Books
+   * 
+   * @apiParam {Number} id Book's unique ID
+   * 
+   * @apiSuccess {Object} book All basic information from a book
+   * 
+   * @apiError BookNotFound There isn't any data.
+   */
   {
     method: 'get',
     path: '/:id',
     controller: BooksController.getOneBook
   },
+  /**
+   * @api {post} /books/new Add a new book
+   * @apiName AddNewBook
+   * @apiGroup Books
+   * 
+   * @apiParam {String} name Book's name
+   * @apiParam {String} edition Book's edition
+   * @apiParam {String} isbn Book's unique ISBN number
+   * @apiParam {Number} publisherId Book's publisher unique ID
+   * @apiParam {Date} published Book's publication date
+   * @apiParam {String} description Book's description
+   * 
+   * @apiSuccess {String} message Success
+   * @apiError BadValue Some field has bad information
+   */
   {
     method: 'post',
     path: '/new',
