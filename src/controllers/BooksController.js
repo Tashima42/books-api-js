@@ -33,26 +33,9 @@ controller.getOneBook = async (req, res) => {
 }
 
 controller.insertBook = async (req, res) => {
-  const {
-    name,
-    edition,
-    isbn,
-    publisherId,
-    published,
-    language,
-    description
-  } = req.body
-
+  const insertBookData = req.body
   try {
-    const insertedBook = await Book.create({
-      name,
-      edition,
-      isbn,
-      publisherId,
-      published,
-      language,
-      description
-    })
+    const insertedBook = await controller.insertOne(insertBookData)
     if (!insertedBook) {
       return res.status(400).send("Bad information")
     }
@@ -79,7 +62,7 @@ controller.updateBook = async (req, res) => {
   const { id } = req.params
   const updateData = req.body
   try {
-    const updatedBook = await Book.update(updateData, { where: { id } })
+    const updatedBook = await controller.updateOne(updateData, id)
     if (!updatedBook[0]) {
       return res.status(400).send("Bad information")
     }

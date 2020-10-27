@@ -1,5 +1,59 @@
 define({ "api": [
   {
+    "type": "delete",
+    "url": "/authors/:id",
+    "title": "Delete one author by id",
+    "name": "DeleteAuthor",
+    "group": "Authors",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Author's unique ID</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Success</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "BadValue",
+            "description": "<p>Bad values</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "AuthorNotFound",
+            "description": "<p>There isn't any data.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/routes/authors.js",
+    "groupTitle": "Authors"
+  },
+  {
     "type": "get",
     "url": "/authors",
     "title": "Request all authors",
@@ -81,6 +135,76 @@ define({ "api": [
             "optional": false,
             "field": "AuthorNotFound",
             "description": "<p>There isn't any data.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/routes/authors.js",
+    "groupTitle": "Authors"
+  },
+  {
+    "type": "post",
+    "url": "/authors/new",
+    "title": "Insert a new author",
+    "name": "InsertAuthor",
+    "group": "Authors",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>All Success</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "BadValue",
+            "description": "<p>Bad values</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/routes/authors.js",
+    "groupTitle": "Authors"
+  },
+  {
+    "type": "put",
+    "url": "/authors/:id",
+    "title": "Update an author",
+    "name": "UpdateAuthor",
+    "group": "Authors",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Success</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "BadValue",
+            "description": "<p>Bad values</p>"
           }
         ]
       }
@@ -401,6 +525,136 @@ define({ "api": [
     "groupTitle": "Books"
   },
   {
+    "type": "post",
+    "url": "/links/new",
+    "title": "Create a group of Links",
+    "name": "CreateLinksGroup",
+    "group": "Links",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "pdf",
+            "description": "<p>Pdf download link</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "epub",
+            "description": "<p>Epub download link</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "mobi",
+            "description": "<p>Mobi download link</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "other",
+            "description": "<p>Other download link</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "bookId",
+            "description": "<p>Book's unique id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Success</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "Badvalue",
+            "description": "<p>Bad Value</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/routes/links.js",
+    "groupTitle": "Links"
+  },
+  {
+    "type": "delete",
+    "url": "/links/:id",
+    "title": "Delete a group of Links by id",
+    "name": "DeleteLinksGroup",
+    "group": "Links",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Link's unique ID</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Success</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "LinksNotFound",
+            "description": "<p>There isn't any data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "BadValue",
+            "description": "<p>Bad values</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/routes/links.js",
+    "groupTitle": "Links"
+  },
+  {
     "type": "get",
     "url": "/links",
     "title": "Request all links",
@@ -482,6 +736,89 @@ define({ "api": [
             "optional": false,
             "field": "LinksNotFound",
             "description": "<p>There isn't any data.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/routes/links.js",
+    "groupTitle": "Links"
+  },
+  {
+    "type": "put",
+    "url": "/links/:id",
+    "title": "Update a group of Links",
+    "name": "UpdateLinksGroup",
+    "group": "Links",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Link's unique ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "pdf",
+            "description": "<p>Pdf download link</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "epub",
+            "description": "<p>Epub download link</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "mobi",
+            "description": "<p>Mobi download link</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "other",
+            "description": "<p>Other download link</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "bookId",
+            "description": "<p>Book's unique id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Success</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "Badvalue",
+            "description": "<p>Bad Value</p>"
           }
         ]
       }

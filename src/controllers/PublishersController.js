@@ -12,7 +12,7 @@ controller.getAllPublishers = async (req, res) => {
     }
     res.status(200).send(allPublishers)
   } catch (error) {
-    console.error(`[publishers-controller]: ${error}`)
+    console.error(`[publishers]: ${error}`)
     res.status(500).send('Internal server error')
   }
 }
@@ -26,21 +26,21 @@ controller.getOnePublisher = async (req, res) => {
     }
     res.status(200).send(onePublisher)
   } catch (error) {
-    console.error(`[publishers-controller]: ${error}`)
+    console.error(`[publishers]: ${error}`)
     res.status(500).send('Internal server error')
   }
 }
 
 controller.insertPublisher = async (req, res) => {
-  const { name } = req.body
+  const insertData = req.body
   try {
-    const insertedPublisher = await Publisher.create({ name })
+    const insertedPublisher = await controller.insertOne(insertData)
     if (!insertedPublisher) {
       res.status(400).send('Bad value')
     }
     res.status(201).send('Success')
   } catch (error) {
-    console.error(`[publishers-controller]: ${error}`)
+    console.error(`[publishers]: ${error}`)
     res.status(500).send('Internal server error')
   }
 }
@@ -54,22 +54,22 @@ controller.deletePublisher = async (req, res) => {
     }
     res.status(200).send('Success')
   } catch (error) {
-    console.error(`[publishers-controller]: ${error}`)
+    console.error(`[publishers]: ${error}`)
     res.status(500).send('Internal server error')
   }
 }
 
 controller.updatePublisher = async (req, res) => {
   const { id } = req.params
-  const { name } = req.body
+  const updateData = req.body
   try {
-    const updatedPublisher = await Publisher.update({ name }, { where: { id } })
+    const updatedPublisher = await controller.updateOne(updateData, id)
     if (!updatedPublisher) {
       res.status(400).send('Bad value')
     }
     res.status(200).send('Success')
   } catch (error) {
-    console.error(`[publishers-controller]: ${error}`)
+    console.error(`[publishers]: ${error}`)
     res.status(500).send('Internal server error')
   }
 }

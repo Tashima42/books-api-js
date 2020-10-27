@@ -20,8 +20,8 @@ export default [
    * @apiError PublishersNotFound There isn't any data.
    */
   {
-    method: 'get',
-    path: '/',
+    method: "get",
+    path: "/",
     controller: PublishersController.getAllPublishers
   },
   /**
@@ -36,8 +36,8 @@ export default [
    * @apiError PublisherNotFound There isn't any data.
    */
   {
-    method: 'get',
-    path: '/:id',
+    method: "get",
+    path: "/:id",
     controller: PublishersController.getOnePublisher
   },
   /**
@@ -51,8 +51,8 @@ export default [
    * @apiError BadValue Some field has bad information
    */
   {
-    method: 'post',
-    path: '/new',
+    method: "post",
+    path: "/new",
     controller: PublishersController.insertPublisher
   },
   /**
@@ -66,8 +66,8 @@ export default [
   * @apiError BadValue Some field has bad information
   */
   {
-    method: 'delete',
-    path: '/:id',
+    method: "delete",
+    path: "/:id",
     controller: PublishersController.deletePublisher
   },
   /**

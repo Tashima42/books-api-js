@@ -1,4 +1,4 @@
-import db from '../../models'
+import db from "../../models"
 
 const Controller = (Model) => {
   const model = db[Model]
@@ -34,10 +34,30 @@ const Controller = (Model) => {
     }
   }
 
+  const insertOne = async (insertData) => {
+    try {
+      const inserted = await model.create(insertData)
+      return inserted
+    } catch (error) {
+      console.error(`[controller]: ${error}`)
+    }
+  }
+
+  const updateOne = async (updateData, id) => {
+    try {
+      const updated = await model.update(updateData, { where: { id } })
+      return updated
+    } catch (error) {
+      console.error(`[controller]: ${error}`)
+    }
+  }
+
   return {
     getAll,
     getOne,
-    deleteOne
+    deleteOne,
+    insertOne,
+    updateOne
   }
 }
 
