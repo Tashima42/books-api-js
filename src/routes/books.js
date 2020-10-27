@@ -1,4 +1,4 @@
-import BooksController from '../controllers/BooksController'
+import BooksController from "../controllers/BooksController"
 
 export default [
   /**
@@ -26,8 +26,8 @@ export default [
    * @apiError BooksNotFound There isn't any data.
    */
   {
-    method: 'get',
-    path: '/',
+    method: "get",
+    path: "/",
     controller: BooksController.getAllBooks
   },
   /**
@@ -42,8 +42,8 @@ export default [
    * @apiError BookNotFound There isn't any data.
    */
   {
-    method: 'get',
-    path: '/:id',
+    method: "get",
+    path: "/:id",
     controller: BooksController.getOneBook
   },
   /**
@@ -62,8 +62,46 @@ export default [
    * @apiError BadValue Some field has bad information
    */
   {
-    method: 'post',
-    path: '/new',
+    method: "post",
+    path: "/new",
     controller: BooksController.insertBook
+  },
+
+  /**
+   * @api {delete} /books/:id Delete a book
+   * @apiName DeleteBook
+   * @apiGroup Books
+   * 
+   * @apiParam {Number} id Book's unique id
+   * 
+   * @apiSuccess {String} message Success
+   * @apiError BadValue Some field has bad information
+   */
+  {
+    method: "delete",
+    path: "/:id",
+    controller: BooksController.deleteBook
+  },
+
+  /**
+   * @api {put} /books/:id Update a book
+   * @apiName UpdateBook
+   * @apiGroup Books
+   * 
+   * @apiParam {Number} id Book's unique id
+   * @apiParam {String} name Book's name
+   * @apiParam {String} edition Book's edition
+   * @apiParam {String} isbn Book's unique ISBN number
+   * @apiParam {Number} publisherId Book's publisher unique ID
+   * @apiParam {Date} published Book's publication date
+   * @apiParam {String} description Book's description
+   * 
+   * @apiSuccess {String} message Success
+   * @apiError BadValue Some field has bad information
+   */
+  {
+    method: "put",
+    path: "/:id",
+    controller: BooksController.updateBook
   }
 ]

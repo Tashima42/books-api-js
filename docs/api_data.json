@@ -173,6 +173,54 @@
     "groupTitle": "Books"
   },
   {
+    "type": "delete",
+    "url": "/books/:id",
+    "title": "Delete a book",
+    "name": "DeleteBook",
+    "group": "Books",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Book's unique id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Success</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "BadValue",
+            "description": "<p>Some field has bad information</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/routes/books.js",
+    "groupTitle": "Books"
+  },
+  {
     "type": "get",
     "url": "/books",
     "title": "Request all books",
@@ -254,6 +302,96 @@
             "optional": false,
             "field": "BookNotFound",
             "description": "<p>There isn't any data.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/routes/books.js",
+    "groupTitle": "Books"
+  },
+  {
+    "type": "put",
+    "url": "/books/:id",
+    "title": "Update a book",
+    "name": "UpdateBook",
+    "group": "Books",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Book's unique id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Book's name</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "edition",
+            "description": "<p>Book's edition</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "isbn",
+            "description": "<p>Book's unique ISBN number</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "publisherId",
+            "description": "<p>Book's publisher unique ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Date",
+            "optional": false,
+            "field": "published",
+            "description": "<p>Book's publication date</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "description",
+            "description": "<p>Book's description</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Success</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "BadValue",
+            "description": "<p>Some field has bad information</p>"
           }
         ]
       }
@@ -530,6 +668,54 @@
             "optional": false,
             "field": "PublisherNotFound",
             "description": "<p>There isn't any data.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/routes/publishers.js",
+    "groupTitle": "Publishers"
+  },
+  {
+    "type": "put",
+    "url": "/publishers/:id",
+    "title": "Update a publisher",
+    "name": "UpdatePublisher",
+    "group": "Publishers",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Publisher's name</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Success</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "BadValue",
+            "description": "<p>Some field has bad information</p>"
           }
         ]
       }

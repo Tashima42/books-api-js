@@ -59,4 +59,19 @@ controller.deletePublisher = async (req, res) => {
   }
 }
 
+controller.updatePublisher = async (req, res) => {
+  const { id } = req.params
+  const { name } = req.body
+  try {
+    const updatedPublisher = await Publisher.update({ name }, { where: { id } })
+    if (!updatedPublisher) {
+      res.status(400).send('Bad value')
+    }
+    res.status(200).send('Success')
+  } catch (error) {
+    console.error(`[publishers-controller]: ${error}`)
+    res.status(500).send('Internal server error')
+  }
+}
+
 export default controller
