@@ -4,10 +4,12 @@
   "description": "api for serving books",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node ./src/index.js node -r dotenv/config src/index.js dotenv_config_path=.env",
+    "dev": "nodemon --exec babel-node ./src/index.js -r dotenv/config src/index.js dotenv_config_path=.env",
     "lint": "eslint src/**/*.js src/*.js",
     "generateDoc": "npx apidoc -i ./src/routes -o docs",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migrate": "npx sequelize-cli db:migrate",
+    "seed": "npx sequelize-cli db:seed:all"
   },
   "repository": {
     "type": "git",
