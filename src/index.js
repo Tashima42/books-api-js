@@ -3,6 +3,7 @@ import 'dotenv/config'
 import cors from 'cors'
 import express from 'express'
 import routes from './routes/index'
+import sequelize from '../models/index'
 const port = process.env.PORT
 
 const app = express()
