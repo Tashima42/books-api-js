@@ -4,12 +4,16 @@
   "description": "api for serving books",
   "main": "src/index.js",
   "scripts": {
+    "prestart": "npm run build",
+    "start": "node ./build/index.js",
     "dev": "nodemon --exec babel-node ./src/index.js -r dotenv/config src/index.js dotenv_config_path=.env",
     "lint": "eslint src/**/*.js src/*.js",
     "generateDoc": "npx apidoc -i ./src/routes -o docs",
     "test": "echo \"Error: no test specified\" && exit 1",
     "migrate": "npx sequelize-cli db:migrate",
-    "seed": "npx sequelize-cli db:seed:all"
+    "seed": "npx sequelize-cli db:seed:all",
+    "prebuild": "rm -rf build && mkdir build",
+    "build": "npx babel ./src --out-dir ./build"
   },
   "repository": {
     "type": "git",
@@ -35,6 +39,7 @@
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.12.3",
     "@babel/node": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.17",
     "@babel/preset-env": "^7.12.1",
     "apidoc": "^0.25.0",
     "eslint": "^7.12.0",
