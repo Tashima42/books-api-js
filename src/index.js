@@ -15,11 +15,11 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }))
 routes(app)
 async function syncModels() {
   try {
-    await sequelize.sync({ alter: true })
-    console.info('Synced')
-    app.listen(port, () => {
-      console.info(`listening at http://localhost:${port}`)
-    })
+    //sequelize.sync({ alter: true }).then(() => {
+      app.listen(port, () =>
+        console.info(`listening at http://localhost:${port}`)
+      )
+    //})
   } catch (error) {
     console.error(`Error: ${error}`)
   }

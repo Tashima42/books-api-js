@@ -16,6 +16,8 @@ var _express = _interopRequireDefault(require("express"));
 
 var _index = _interopRequireDefault(require("./routes/index"));
 
+var _index2 = _interopRequireDefault(require("../models/index"));
+
 var port = process.env.PORT;
 var app = (0, _express["default"])();
 app.use((0, _cors["default"])());
@@ -27,6 +29,7 @@ app.use(_bodyParser["default"].urlencoded({
   limit: '10mb'
 }));
 (0, _index["default"])(app);
+console.log(_index2["default"]);
 
 function syncModels() {
   return _syncModels.apply(this, arguments);
@@ -40,7 +43,7 @@ function _syncModels() {
           case 0:
             _context.prev = 0;
             _context.next = 3;
-            return sequelize.sync({
+            return _index2["default"].sync({
               alter: true
             });
 

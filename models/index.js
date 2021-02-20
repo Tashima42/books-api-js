@@ -13,10 +13,13 @@ const sequelize = new Sequelize(
   process.env.DATABASE_URL,
   {
     dialect: 'postgres',
-    ssl: true,
-    dialecOptions: {
-      ssl: true
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      } 
     },
+    ssl: true,
     host: process.env.DATABASE_HOST,
     port: process.env.DATABASE_PORT,
     loggin: false
