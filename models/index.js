@@ -9,6 +9,8 @@ const configFile = require('../config/config')
 const config = configFile[env]
 const db = {};
 
+const sequelize = new Sequelize(process.env.DATABASE_URL)
+/*
 const sequelize = new Sequelize(
   process.env.DATABASE,
   process.env.DATABASE_USER,
@@ -20,6 +22,7 @@ const sequelize = new Sequelize(
     logging: false
   }
 )
+*/
 
 //Use sync on all Models
 async function syncModels() {

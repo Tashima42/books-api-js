@@ -1,5 +1,7 @@
 const { Sequelize } = require('sequelize')
+require('dotenv').config()
 
+/*
 const sequelize = new Sequelize(
   process.env.DATABASE,
   process.env.DATABASE_USER,
@@ -11,6 +13,8 @@ const sequelize = new Sequelize(
     logging: false
   }
 )
+*/
+const sequelize = new Sequelize(process.env.DATABASE_URL)
 
 //Use sync on all Models
 async function syncModels() {
