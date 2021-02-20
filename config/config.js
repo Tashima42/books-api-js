@@ -4,21 +4,21 @@ module.exports = {
   development: {
     username: process.env.DATABASE_USER,
     password: process.env.DATABASE_PASSWORD,
-    database: "books_api_development",
+    database: process.env.DATABASE,
     host: process.env.DATABASE_HOST,
     dialect: "postgres"
   },
   test: {
     username: process.env.DATABASE_USER,
     password: process.env.DATABASE_PASSWORD,
-    database: "books_api_test",
+    database: process.env.DATABASE,
     host: process.env.DATABASE_HOST,
     dialect: "postgres"
   },
   production: {
     username: process.env.DATABASE_USER,
     password: process.env.DATABASE_PASSWORD,
-    database: "books_api_production",
+    database: process.env.DATABASE,
     host: process.env.DATABASE_HOST,
     dialect: "postgres"
   }

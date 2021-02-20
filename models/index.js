@@ -9,12 +9,28 @@ const configFile = require('../config/config')
 const config = configFile[env]
 const db = {};
 
-let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
+const sequelize = new Sequelize(
+  process.env.DATABASE,
+  process.env.DATABASE_USER,
+  process.env.DATABASE_PASSWORD,
+  {
+    host: process.env.DATABASE_HOST,
+    port: process.env.DATABASE_PORT,
+    dialect: 'postgres',
+    logging: false
+  }
+)
+
+//Use sync on all Models
+async function syncModels() {
+  try {
+    await sequelize.sync({ alter: true })
+    console.info('Synced')
+  } catch (error) {
+    console.error(`Error: ${error}`)
+  }
 }
+syncModels()
 
 fs
   .readdirSync(__dirname)
