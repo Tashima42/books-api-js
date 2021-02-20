@@ -9,7 +9,15 @@ const configFile = require('../config/config')
 const config = configFile[env]
 const db = {};
 
-const sequelize = new Sequelize(process.env.DATABASE_URL)
+const sequelize = new Sequelize(
+  process.env.DATABASE_URL,
+  {
+    dialect: 'postgres',
+    host: process.env.DATABASE_HOST,
+    port: process.env.DATABASE_PORT,
+    loggin: false
+  }
+)
 /*
 const sequelize = new Sequelize(
   process.env.DATABASE,
